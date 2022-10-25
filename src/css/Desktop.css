@@ -1,0 +1,148 @@
+@import url('http://fonts.cdnfonts.com/css/kaushan-script');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+:root{
+    --white : #FFFFFF;
+    --kaushan: "Kaushan Script";
+    --poppins: "Poppins";
+    --red: #FC0505;
+    --black: #000000;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    box-sizing: border-box;
+    width: 100vw;
+    font-family: var(--kaushan);
+}
+
+/*NAVBAR MENU STYLING*/
+.navbar-menu{
+    background-color: var(--white);
+    list-style: none;
+    position: absolute;
+    top: -30px;
+    font-size: 30px;
+    height: 100vh;
+    display: none;
+    right: -100%;
+    
+}
+
+.navbar-menu li{
+    margin-top: 40px;
+    margin-right: 20px; 
+}
+
+/*NAVBAR STYLING*/
+#logo{
+    width: 50px;
+    height: 50%;
+}
+.fa-bars{
+    font-size: 30px;
+    color: var(--white);
+}
+nav{
+    box-sizing: border-box;
+    position: absolute;
+    padding: 0 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*BANNER STYLING*/
+
+.top-banner{
+    position: relative;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+}
+
+#banner-image{
+    height: 500px;
+    width: 100%;
+}
+
+.presentation{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    padding-bottom: 30px;
+}
+
+.banner-text{
+    font-weight: bold;
+    font-size: 80px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.red-h{
+    color: var(--red);
+}
+
+.banner-desc{
+    font-family: var(--poppins);
+    font-size: 15px;
+    width: 300px;
+    text-align: left;
+}
+
+.more-btn{
+    border: 2px solid var(--black);
+    background: none;
+    width: 150px;
+    padding: 10px 0;
+    border-radius: 8px;
+    color: var(--red);
+    font-size: 15px;
+    transition: all 500ms ease-in-out;
+}
+.more-btn:hover{
+    background-color: var(--red);
+    color: var(--white);
+    border-color: var(--red);
+}
+
+/*MENU STYLING*/
+h2{
+    margin: 40px 0;
+}
+.our-menu{
+    text-align: center;
+    box-sizing: border-box;
+    width: 100vw;
+}
+
+.item{
+    display: grid;
+    width: 100;
+    grid-template-columns: 1fr 1fr;
+}
+
+.item-desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 70px;
+    gap: 40px;
+}
+
+.item-desc > p{
+    width: 80%;
+    font-size: 30px;
+    text-align: left;
+}
+
+
