@@ -219,8 +219,13 @@ footer{
 
     .container{
         width: 100%;
+        justify-content: flex-start;
         overflow-x: auto;
         gap: 10px;
+    }
+
+    .container::-webkit-scrollbar{
+        display: none;
     }
 
     .items{
