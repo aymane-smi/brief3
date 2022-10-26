@@ -26,7 +26,7 @@ body{
     position: absolute;
     top: -30px;
     font-size: 30px;
-    height: 100vh;
+    height: 100%;
     display: none;
     right: -100%;
     
@@ -48,8 +48,8 @@ body{
 }
 nav{
     box-sizing: border-box;
-    position: absolute;
     padding: 0 20px;
+    position: absolute;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -145,8 +145,8 @@ h2{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 90%;
-    padding-left: 10%;
+    width: 100%;
+    text-overflow: clip;
     gap: 40px;
 }
 
@@ -178,6 +178,24 @@ footer{
 
 @media screen and (max-width: 950px){
     /*BANNER STYLING*/
+
+    .banner-text{
+        font-size: 50px;
+    }
+
+    body{
+        width: 100%;
+    }
+    .fa-bars{
+        color: var(--black);
+        font-size: 15px;
+    }
+
+    #logo{
+        width: 30px;
+        height: 30px;
+    }
+
     #banner-image{
         display: none;
     }
@@ -188,7 +206,7 @@ footer{
     }
     .banner-desc{
         width: 100%;
-        padding: 0 70px;
+        text-align: center;
     }
     nav{
         top: 0;
@@ -215,11 +233,26 @@ footer{
     }
 
     .item-desc{
-        text-align: center;
         display: flex;
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        border: 1px solid red;
+        gap: 10px;
+        padding-left: 40px;
+        width: fit-content;
+        margin-bottom: 20px;
+    }
+
+    .item-desc > p{
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+    /*FOOTER STYLING*/
+
+    footer{
+        font-size: 14px;
     }
 }

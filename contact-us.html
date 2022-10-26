@@ -5,7 +5,7 @@
         <meat property="og:image" content="./assets/LogoMakr-5aET2k.png"/>
         <link rel="icon" type="images/x-icon" href="./assets/LogoMakr-5aET2k.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-        <link rel="stylesheet" href="./src/css/about-us.css"/>
+        <link rel="stylesheet" href="./src/css/contact-us.css"/>
         <title>Hitaka</title>
     </head>
     <body>
@@ -16,24 +16,33 @@
         </nav>
         <!--banner image-->
         <div class="banner">
-            <p>About us</p>
+            <p>Contact us</p>
         </div>
+        <!--contact us form-->
 
-        <!--about us-->
-
-        <div class="about">
-            <img src="./assets/unsplash_XpVujb-zrLw.png" alt="old japanese house"/>
-            <div>
-                <p>
-                    Hitaka is a restaurant based in tokyo  founded in 1940 by <span class="fullname">NAKLI HITAKA</span>.<br>
-
-                    The restaurant was awrded by given it 3 star michelin, and more trophies...<br>
-
-                    The restuarant contain a group of chefs,each chef is a master in cooking techniques
-                </p>
+        <form>
+            <!--first name-->
+            <div class="input">
+                <label for="firstname">Firstname</label>
+                <input type="text" name="firstname" id="firstname"/>
             </div>
-        </div>
-
+            <!--last name-->
+            <div class="input">
+                <label for="lastname">Lastname</label>
+                <input type="text" name="lastname" id="lastname"/>
+            </div>
+            <!--email-->
+            <div class="input">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email"/>
+            </div>
+            <!--message-->
+            <div class="input">
+                <label for="message">Message</label>
+                <textarea name="email" id="email"></textarea>
+            </div>
+            <button class="submit">Submit</button>
+        </form>
         <!--footer-->
         <footer>
             <i class="fa-brands fa-facebook"></i>

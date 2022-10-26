@@ -13,7 +13,6 @@
     margin: 0;
 }
 body{
-    position: relative;
     box-sizing: border-box;
     width: 100vw;
     font-family: var(--kaushan);
@@ -56,36 +55,50 @@ nav{
     font-size: 30px;
 }
 
-/*ABOUT STYLING*/
+/*FORM STYLING*/
 
-.about{
+form{
+    width: 90%;
+    margin: 0 auto;
+}
+
+/*INPUT STYLING*/
+
+.input{
     display: flex;
-    gap: 10%;
-    align-items: center;
-    text-align: center;
-    margin-top: 80px;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
 }
 
-.about img{
-    height: 400px;
+input, textarea, .submit{
+    background-color: transparent;
+    height: 40px;
+    border: 2px solid var(--black);
 }
 
-.about > div{
-    width: 550px;
-    line-height: 50px;
+input:focus, textarea{
+    outline: none;
 }
 
-.fullname{
-    color: var(--red);
-    text-transform: uppercase;
+textarea{
+    height: 100px;
 }
 
-/*FOOTER STYLING*/
+.submit{
+    width: 15%;
+    margin-top: 30px;
+}
+
+.submit:hover{
+    color: var(--white);
+    background-color: var(--red);
+}
+
+/*FOOTER*/
 
 footer{
-    border: 1px solid black;
     width: 100%;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +112,8 @@ footer{
     color: var(--red);
 }
 
-@media screen and (max-width: 950px){
+@media screen and (max-width: 600px){
+    /*NAVBAR STYLING*/
     #logo{
         width: 30px;
         height: 30px;
@@ -109,31 +123,16 @@ footer{
         font-size: 15px;
     }
 
-    /*BANNER STYLING*/
+    /*FORM STYLING*/
 
-    .banner{
-        line-height: 150px;
+    form{
+        font-size: 15px;
+     }
+
+    .submit{
+        width: 80px;
     }
 
-    .banner > p{
-        font-size: 20px;
-    }
-    .about{
-        gap: 3%;
-    }
-
-    .about > div{
-        width: 60%;
-        line-height: 15px;
-    }
-
-    .about > img{
-        width: 40%;
-        height: 400px;
-    }
-}
-
-@media screen and (max-width: 600px){
     /*FOOTER STYLING*/
 
     footer{
