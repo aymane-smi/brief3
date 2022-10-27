@@ -1,6 +1,5 @@
 const humberger = document.querySelector(".fa-bars");
 const menu = document.querySelector(".navbar-menu");
-let key = true;
 
 
 window.addEventListener("click", (e)=>{

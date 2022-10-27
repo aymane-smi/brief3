@@ -136,7 +136,7 @@ nav{
     gap: 10px;
 }
 
-.portion > button{
+.portion-btn{
     font-family: var(--kaushan);
     background-color: var(--white);
     border: none;
@@ -146,7 +146,13 @@ nav{
     font-weight: 400;
 }
 
+.selected-portion{
+    color: var(--white);
+    background-color: var(--red);
+}
+
 .add{
+    font-family: var(--kaushan);
     margin-top: 30px;
     width: 100%;
     background-color: white;
@@ -222,6 +228,7 @@ footer{
         justify-content: flex-start;
         overflow-x: auto;
         gap: 10px;
+        scrollbar-width: none;
     }
 
     .container::-webkit-scrollbar{
@@ -259,6 +266,7 @@ footer{
         margin-top: 5px;
         padding-top: 5px;
         padding-bottom: 5px;
+        
     }
 }
 
