@@ -193,12 +193,12 @@ footer{
 }
 
 .cart-details{
-    position: absolute;
+    position: fixed;
     display: none;
-    width: 30%;
+    width: 50%;
     height: 50%;
-    top: 50%;
-    right: 35%;
+    top: 25%;
+    right: 25%;
     border-radius: 5px;
     box-shadow: -3px 0px 21px -1px rgba(0,0,0,0.75);
     background-color: var(--white);

@@ -1,9 +1,12 @@
+import { Storage, objExiste, incObj, cartDom } from "./utils.js";
 const add_btns = document.querySelectorAll(".add");
 const cart_btn = document.querySelector(".cart-btn");
 const cart_details = document.querySelector(".cart-details");
 const portion_btns = document.querySelectorAll(".portion-btn");
+
+let cart_arr = Storage();
 let key = false;
-localStorage.setItem("cart", JSON.stringify([]));
+console.log(cart_arr);
 
 const obj = {
     image: '',
@@ -12,7 +15,7 @@ const obj = {
     type: '',
     qte: 1,
 };
-for(portion of portion_btns){
+for(let portion of portion_btns){
     portion.addEventListener("click", (e)=>{
         for(let tmp of e.target.parentNode.childNodes)
             if(tmp.nodeType === 1)
@@ -20,20 +23,33 @@ for(portion of portion_btns){
         e.target.classList.add("selected-portion");
     });
 }
-for(btn of add_btns){
+for(let btn of add_btns){
     btn.addEventListener("click", (e)=>{
         let existe = false;
-        console.log(e.target.parentNode.childNodes[5].childNodes);
+        let selected_btn;
         for(let tmp of e.target.parentNode.childNodes[5].childNodes){
-            if(tmp.nodeType === 1 && tmp.attributes.class.nodeValue.includes("selected-portion"))
+            if(tmp.nodeType === 1 && tmp.attributes.class.nodeValue.includes("selected-portion")){
+                selected_btn = tmp;
                 existe = true;
+                obj.type = tmp.attributes[1].nodeValue;
+            }
         }
-        //console.log(document.querySelector(".selected-portion").attributes[1].nodeValue);
-        obj.name = e.target.parentNode.childNodes[1].innerText;
-        //obj.type = document.querySelector(".selected-portion").attributes[1].nodeValue;
-        obj.image = e.target.parentNode.parentNode.childNodes[1].attributes[0].nodeValue;
-        console.log(obj);
-        cart_btn.style.display = "unset";
+
+        if(existe){
+            obj.name = e.target.parentNode.childNodes[1].innerText;
+            obj.image = e.target.parentNode.parentNode.childNodes[1].attributes[0].nodeValue;
+            if(objExiste(cart_arr, obj))
+                incObj(cart_arr, obj);
+            else
+                cart_arr.push(obj);
+            console.log(cart_arr);
+            cart_btn.style.display = "unset";
+            selected_btn.classList.remove("selected-portion");
+            cartDom(cart_details, cart_arr);
+            window.localStorage.setItem("cart", JSON.stringify(cart_arr));
+        }else{
+            console.log("please select a portion");
+        }
     });
 }
 
