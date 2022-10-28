@@ -1,4 +1,4 @@
-import { Storage, objExiste, incObj, cartDom } from "./utils.js";
+import { Storage, objExiste, incObj, cartDom, emptyCardDom } from "./utils.js";
 const add_btns = document.querySelectorAll(".add");
 const cart_btn = document.querySelector(".cart-btn");
 const cart_details = document.querySelector(".cart-details");
@@ -6,7 +6,10 @@ const portion_btns = document.querySelectorAll(".portion-btn");
 
 let cart_arr = Storage();
 let key = false;
-console.log(cart_arr);
+cartDom(cart_details, cart_arr);
+
+if(cart_arr.length !== 0)
+    cart_btn.style.display = "unset";
 
 const obj = {
     image: '',
@@ -42,9 +45,9 @@ for(let btn of add_btns){
                 incObj(cart_arr, obj);
             else
                 cart_arr.push(obj);
-            console.log(cart_arr);
             cart_btn.style.display = "unset";
             selected_btn.classList.remove("selected-portion");
+            emptyCardDom(cart_details);
             cartDom(cart_details, cart_arr);
             window.localStorage.setItem("cart", JSON.stringify(cart_arr));
         }else{

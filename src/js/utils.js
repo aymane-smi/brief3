@@ -20,9 +20,19 @@ export const incObj = (cart, obj)=>{
     });
 }
 
+export const emptyCardDom = (dom)=>{
+    for(let tmp of dom.childNodes)
+        dom.removeChild(tmp);
+};
+
 export const cartDom = (dom, cart)=>{
+    console.log(dom);
+    console.log(cart.length);
+    const tmp = document.createElement("div");
+    console.log(tmp.nodeType);
+    console.log("=>", dom.nodeValue);
     for(let tmp of cart){
-        let element = document.createElement("img");
-        dom.appendChild(element);
+        tmp.innerHTML = `${tmp.name}-${tmp.type}`;
+        dom.appendChild(tmp);
     }
 };
