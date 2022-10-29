@@ -1,12 +1,13 @@
-import { Storage, objExiste, incObj, cartDom, emptyCardDom } from "./utils.js";
+import { Storage, objExiste, incObj, cartDom, emptyCardDom, minusOne } from "./utils.js";
 const add_btns = document.querySelectorAll(".add");
 const cart_btn = document.querySelector(".cart-btn");
 const cart_details = document.querySelector(".cart-details");
 const portion_btns = document.querySelectorAll(".portion-btn");
 
-let cart_arr = Storage();
+let cart_arr = Storage();//[]
 let key = false;
 cartDom(cart_details, cart_arr);
+minusOne(cart_arr, cart_details);
 
 if(cart_arr.length !== 0)
     cart_btn.style.display = "unset";
@@ -18,20 +19,27 @@ const obj = {
     type: '',
     qte: 1,
 };
+//foreach // for...of
 for(let portion of portion_btns){
+    //callback function
     portion.addEventListener("click", (e)=>{
-        for(let tmp of e.target.parentNode.childNodes)
+        console.log(e.target.parentNode);
+        for(let tmp of e.target.parentNode.childNodes){
             if(tmp.nodeType === 1)
                 tmp.classList.remove("selected-portion");
+        }
         e.target.classList.add("selected-portion");
     });
 }
+
 for(let btn of add_btns){
     btn.addEventListener("click", (e)=>{
         let existe = false;
         let selected_btn;
+        //console.log(e.target);
         for(let tmp of e.target.parentNode.childNodes[5].childNodes){
             if(tmp.nodeType === 1 && tmp.attributes.class.nodeValue.includes("selected-portion")){
+                console.log(tmp.classList);
                 selected_btn = tmp;
                 existe = true;
                 obj.type = tmp.attributes[1].nodeValue;

@@ -7,6 +7,7 @@
     --red: #FC0505;
     --black: #000000;
     --background: #F5F5F5;
+    --green: #3ebfa3;
 }
 *{
     padding: 0;
@@ -206,11 +207,19 @@ footer{
 }
 
 .item-container{
-    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10%;
+}
+
+.item-title{
+    font-size: 30px;
+}
+
+.item-type{
+    font-weight: 300;
+    font-size: 13px;
 }
 
 .item-content{
@@ -218,14 +227,38 @@ footer{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid red;
-    gap: 40px;
+    gap: 2px;
 }
 
 .cart-image{
     width: 80px;
     height: 80px;
     border-radius: 3px;
+}
+
+.counter{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 2px;
+    background-color: var(--red);
+}
+
+.minus{
+    color: var(--white);
+}
+
+.plus{
+    color: var(--white);
+    background-color: var(--green);
+}
+
+
+span.qte{
+    font-size: 16px;
+    margin: 0 10px;
 }
 
 @media screen and (max-width: 1100px){
