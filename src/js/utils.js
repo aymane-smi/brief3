@@ -26,13 +26,24 @@ export const emptyCardDom = (dom)=>{
 };
 
 export const cartDom = (dom, cart)=>{
-    console.log(dom);
-    console.log(cart.length);
-    const tmp = document.createElement("div");
-    console.log(tmp.nodeType);
-    console.log("=>", dom.nodeValue);
+    console.log("=>", dom);
     for(let tmp of cart){
-        tmp.innerHTML = `${tmp.name}-${tmp.type}`;
-        dom.appendChild(tmp);
+        let div = document.createElement("div");
+        div.classList.add("item-container");
+        div.innerHTML = `
+        <img src="${tmp.image}" class="item-image"/>
+        <div class="item-content">
+            <p class="item-title">${tmp.name}</p>
+            <div class=""qte-selector>
+                <span class="minus"> - </span>
+                <span>${tmp.qte}</span>
+                <span class="plus"> + </span>
+            </div>
+        </div>
+        <p>${tmp.price}</p>
+        `;
+        dom.appendChild(div);
     }
+    //dom.appendChild(document.createElement("p"));
+    console.log(dom);
 };
