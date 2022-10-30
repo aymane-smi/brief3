@@ -1,4 +1,4 @@
-import { Storage, objExiste, incObj, cartDom, emptyCardDom, minusOne } from "./utils.js";
+import { Storage, objExiste, incObj, cartDom, emptyCardDom, minusOne, plusOne, filter, remove } from "./utils.js";
 const add_btns = document.querySelectorAll(".add");
 const cart_btn = document.querySelector(".cart-btn");
 const cart_details = document.querySelector(".cart-details");
@@ -8,6 +8,9 @@ let cart_arr = Storage();//[]
 let key = false;
 cartDom(cart_details, cart_arr);
 minusOne(cart_arr, cart_details);
+plusOne(cart_arr, cart_details);
+filter();
+remove();
 
 if(cart_arr.length !== 0)
     cart_btn.style.display = "unset";
@@ -33,18 +36,21 @@ for(let portion of portion_btns){
 }
 
 for(let btn of add_btns){
+    cart_arr = Storage();
+    obj.type = "";
     btn.addEventListener("click", (e)=>{
         let existe = false;
         let selected_btn;
-        //console.log(e.target);
         for(let tmp of e.target.parentNode.childNodes[5].childNodes){
-            if(tmp.nodeType === 1 && tmp.attributes.class.nodeValue.includes("selected-portion")){
-                console.log(tmp.classList);
+            if(tmp.nodeType === 1 && tmp.classList[1] === "selected-portion"){
                 selected_btn = tmp;
                 existe = true;
                 obj.type = tmp.attributes[1].nodeValue;
+            }else{
+                console.log("inside else");
             }
         }
+
 
         if(existe){
             obj.name = e.target.parentNode.childNodes[1].innerText;
@@ -52,14 +58,15 @@ for(let btn of add_btns){
             if(objExiste(cart_arr, obj))
                 incObj(cart_arr, obj);
             else
-                cart_arr.push(obj);
+                cart_arr.push({...obj});
+            console.log(cart_arr);
             cart_btn.style.display = "unset";
             selected_btn.classList.remove("selected-portion");
             emptyCardDom(cart_details);
             cartDom(cart_details, cart_arr);
             window.localStorage.setItem("cart", JSON.stringify(cart_arr));
         }else{
-            console.log("please select a portion");
+            alert("please select a portion");
         }
     });
 }

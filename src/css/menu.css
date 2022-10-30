@@ -197,8 +197,9 @@ footer{
     position: fixed;
     display: none;
     width: 50%;
-    height: 300px;
+    max-height: 300px;
     overflow-y: scroll;
+
     top: 25%;
     right: 25%;
     border-radius: 5px;
@@ -259,6 +260,19 @@ footer{
 span.qte{
     font-size: 16px;
     margin: 0 10px;
+}
+
+.total{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: orange;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10%;
+}
+
+.total-str{
+    font-size: 22px;
 }
 
 @media screen and (max-width: 1100px){

@@ -23,14 +23,14 @@
         <main>
             <!--tabs menu-->
             <div class="tabs">
-                <button id="all">All</button>
-                <button>Sushi</button>
-                <button>Soup</button>
-                <button>Dessert</button>
+                <button id="all" class="filter">All</button>
+                <button id="sushi" class="filter">Sushi</button>
+                <button id="soup" class="filter">Soup</button>
+                <button id="dessert" class="filter">Dessert</button>
             </div>
             <section class="items">
                 <!--Sushi-->
-            <div class="container">
+            <div class="container sushi">
                 <!--1-->
                 <div class="cart">
                     <img src="./assets/Rectangle 10.png" alt="shoshimi plat"/>
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <!--Soup-->
-            <div class="container">
+            <div class="container soup">
                 <!--1-->
                 <div class="cart">
                     <img src="./assets/Rectangle 10(4).png" alt="shabu shabu soup"/>
@@ -148,7 +148,7 @@
                 </div>
             </div>
             <!--Dessert-->
-            <div class="container">
+            <div class="container dessert">
                 <!--1-->
                 <div class="cart">
                     <img src="./assets/banana-sushi-recipe 1.png" alt="Banana Sushi "/>
@@ -211,7 +211,12 @@
         <div class="cart-btn">
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
-        <div class="cart-details"></div>
+        <div class="cart-details">
+            <div class="total">
+                <span class="total-str">total</span>
+                <span class="total-price">0 $</span>
+            </div>
+        </div>
         <!--footer-->
         <footer>
             <i class="fa-brands fa-facebook"></i>
