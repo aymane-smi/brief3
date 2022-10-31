@@ -22,6 +22,43 @@ body{
 }
 
 /*NAVABAR STYLING*/
+.navbar-menu{
+    background-color: var(--white);
+    list-style: none;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5%;
+    width: 30%;
+    top: -30px;
+    font-size: 30px;
+    height: 100vh;
+    right: 0;
+    box-sizing: border-box;
+    transform: translateX(100%);
+    transition: all 500ms ease-in;
+}
+
+.focused-navbar{
+    background-color: rgba(0,0,0,0.6);
+}
+
+.menu-active{
+    transform: translateX(0);
+}
+
+.navbar-menu li{
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.navbar-menu li a{
+    text-decoration: none;
+    color: var(--black);
+}
 
 nav{
     display: flex;
@@ -85,9 +122,6 @@ nav{
 
 footer{
     width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;

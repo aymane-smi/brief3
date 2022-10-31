@@ -1,4 +1,4 @@
-import { Storage, objExiste, incObj, cartDom, emptyCardDom, minusOne, plusOne, filter, remove } from "./utils.js";
+import { Storage, objExiste, incObj, cartDom, emptyCardDom, minusOne, plusOne, filter, remove, forceClose } from "./utils.js";
 const add_btns = document.querySelectorAll(".add");
 const cart_btn = document.querySelector(".cart-btn");
 const cart_details = document.querySelector(".cart-details");
@@ -36,13 +36,14 @@ for(let portion of portion_btns){
 }
 
 for(let btn of add_btns){
-    cart_arr = Storage();
-    obj.type = "";
+    //cart_arr = Storage();
+    //obj.type = "";
     btn.addEventListener("click", (e)=>{
         let existe = false;
         let selected_btn;
         for(let tmp of e.target.parentNode.childNodes[5].childNodes){
             if(tmp.nodeType === 1 && tmp.classList[1] === "selected-portion"){
+                obj.price = Number.parseInt(tmp.dataset.price);
                 selected_btn = tmp;
                 existe = true;
                 obj.type = tmp.attributes[1].nodeValue;
@@ -78,3 +79,11 @@ cart_btn.addEventListener("click", ()=>{
     else
         cart_details.style.display = "none";
 });
+
+
+document.querySelector(".buy-btn").addEventListener("click", (e)=>{
+    alert("order was sent with value of: "+document.querySelector(".total-price").innerText);
+    emptyCardDom(cart_details);
+    window.localStorage.setItem("cart", JSON.stringify([]));
+    forceClose();
+})

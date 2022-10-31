@@ -16,8 +16,9 @@ export const objExiste = (cart, obj)=>{
 
 export const incObj = (cart, obj)=>{
     cart = cart.map((item)=>{
-        if(item.type === obj.type && item.name === obj.name)
+        if(item.type === obj.type && item.name === obj.name){
             item.qte++;
+        }
     });
 
     console.log(cart);
@@ -25,12 +26,18 @@ export const incObj = (cart, obj)=>{
 }
 
 export const emptyCardDom = (dom)=>{
-    while(dom.firstChild)
+    let tmp = document.querySelector(".total").cloneNode(true);
+    console.log(tmp);
+    while(dom.hasChildNodes())
         dom.removeChild(dom.firstChild);
+    console.log(dom.childNodes);
+    dom.appendChild(tmp);
 };
 
 export const cartDom = (dom, cart)=>{
+    let total = 0;
     for(let tmp of cart){
+        total += tmp.price;
         let div = document.createElement("div");
         div.classList.add("item-container");
         div.id = `${tmp.name}-container` 
@@ -48,32 +55,45 @@ export const cartDom = (dom, cart)=>{
             </div>
             <span class="remove" id="${tmp.name}-${tmp.type}">remove</span>
         </div>
-        <p>${tmp.price} $</p>
+        <p class="${tmp.name}-price">${tmp.price*tmp.qte} $</p>
         `;
         dom.insertBefore(div, document.querySelector(".total"));
+        console.log(total);
+        
+        //console.log(price);
+        //price.style.display = "unset";
+        //price.innerText = total+" $";
     }
+    let price = document.querySelector(".total-price");
+    console.log(price);
+    price.textContent = total+" $";
     //dom.appendChild(document.createElement("p"));
-    console.log(dom);
+    console.log(dom.childNodes);
 };
 
 export const minusOne = (cart, dom)=>{
     console.log(dom);
     for(let btn of document.querySelectorAll(".minus")){
         btn.addEventListener("click", (e)=>{
+            console.log(document.querySelector(`.${e.target.attributes[1].nodeValue}-qte`).innerText);
             let value = Number.parseInt(document.querySelector(`.${e.target.attributes[1].nodeValue}-qte`).innerText);
             value--;
             document.querySelector(`.${e.target.attributes[1].nodeValue}-qte`).innerText = value;
             for(let i=0;i<cart.length;i++)
                 if(cart[i].name === e.target.attributes[1].nodeValue)
                     if(cart[i].qte === 1){
+                        document.querySelector(".total-price").innerText = (Number.parseInt(document.querySelector(".total-price").innerText.split(" ")[0]) - cart[i].price) +" $"
                         console.log(e.target.attributes[1].nodeValue)
                         cart = cart.filter((item)=> item.name !== e.target.attributes[1].nodeValue);
                         console.log(cart);
                         dom.removeChild(document.querySelector(`#${e.target.attributes[1].nodeValue}-container`));
                         forceClose();
                     }
-                    else
+                    else{
                         cart[i].qte--;
+                        document.querySelector(`.${cart[i].name}-price`).innerText = cart[i].price*cart[i].qte+" $";
+                        document.querySelector(".total-price").innerText = (Number.parseInt(document.querySelector(".total-price").innerText.split(" ")[0]) - cart[i].price) +" $"
+                    }
             window.localStorage.setItem("cart", JSON.stringify(cart));
         });
     }
@@ -86,8 +106,11 @@ export const plusOne = (cart, dom)=>{
             value++;
             document.querySelector(`.${e.target.attributes[1].nodeValue}-qte`).innerText = value;
             for(let i=0;i<cart.length;i++)
-                if(cart[i].name === e.target.attributes[1].nodeValue)
+                if(cart[i].name === e.target.attributes[1].nodeValue){
                         cart[i].qte++;
+                        document.querySelector(`.${cart[i].name}-price`).innerText = cart[i].price*cart[i].qte+" $";
+                        document.querySelector(".total-price").innerText = (Number.parseInt(document.querySelector(".total-price").innerText.split(" ")[0]) + cart[i].price) +" $"
+                    }
             window.localStorage.setItem("cart", JSON.stringify(cart));
         });
     }
@@ -135,10 +158,10 @@ export const remove = ()=>{
         });
 }
 
-const forceClose = ()=>{
+export const forceClose = ()=>{
     if(document.querySelector(".cart-details").childNodes.length === 3){
         document.querySelector(".cart-details").style.display = "none";
-        document.querySelector(".cart-btn").style.display = "none";
+        //document.querySelector(".cart-btn").style.display = "none";
     }
 
 }
