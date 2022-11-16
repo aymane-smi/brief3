@@ -66,6 +66,13 @@ for(let btn of add_btns){
             emptyCardDom(cart_details);
             cartDom(cart_details, cart_arr);
             window.localStorage.setItem("cart", JSON.stringify(cart_arr));
+            document.querySelector(".buy-btn").addEventListener("click", (e)=>{
+                alert("order was sent with value of: "+document.querySelector(".total-price").innerText);
+                emptyCardDom(cart_details);
+                window.localStorage.setItem("cart", JSON.stringify([]));
+                cart_details.style.display = "none";
+                cart_btn.style.display = "none";
+            })
         }else{
             alert("please select a portion");
         }
@@ -79,11 +86,3 @@ cart_btn.addEventListener("click", ()=>{
     else
         cart_details.style.display = "none";
 });
-
-
-document.querySelector(".buy-btn").addEventListener("click", (e)=>{
-    alert("order was sent with value of: "+document.querySelector(".total-price").innerText);
-    emptyCardDom(cart_details);
-    window.localStorage.setItem("cart", JSON.stringify([]));
-    forceClose();
-})
