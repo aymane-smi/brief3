@@ -161,7 +161,7 @@ export const remove = ()=>{
 export const forceClose = ()=>{
     if(document.querySelector(".cart-details").childNodes.length === 3){
         document.querySelector(".cart-details").style.display = "none";
-        //document.querySelector(".cart-btn").style.display = "none";
+        document.querySelector(".cart-btn").style.display = "none";
     }
 
 }

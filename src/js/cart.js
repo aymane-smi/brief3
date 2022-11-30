@@ -7,8 +7,6 @@ const portion_btns = document.querySelectorAll(".portion-btn");
 let cart_arr = Storage();//[]
 let key = false;
 cartDom(cart_details, cart_arr);
-minusOne(cart_arr, cart_details);
-plusOne(cart_arr, cart_details);
 filter();
 remove();
 
@@ -72,7 +70,9 @@ for(let btn of add_btns){
                 window.localStorage.setItem("cart", JSON.stringify([]));
                 cart_details.style.display = "none";
                 cart_btn.style.display = "none";
-            })
+            });
+            minusOne(cart_arr, cart_details);
+            plusOne(cart_arr, cart_details);
         }else{
             alert("please select a portion");
         }
